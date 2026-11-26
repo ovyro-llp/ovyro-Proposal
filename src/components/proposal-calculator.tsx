@@ -54,18 +54,11 @@ export function ProposalCalculator() {
     }
   };
 
-  // Build dynamic prefilled WhatsApp message for 7875920111
-  const selectedModuleTitles = modules
-    .filter((m) => selectedModules.includes(m.id))
-    .map((m) => m.name);
-
+  // Build prefilled WhatsApp message for 7875920111
   const rawMessage = `Hi Hrushi, I reviewed the OVYRO Method proposal and funnel architecture. I want to schedule an Architecture Kickoff session for my business.
 
 ${companyName.trim() ? `Business: ${companyName.trim()}\n` : ""}${revenueRange ? `Current Cash Flow: ${revenueRange}\n` : ""}
-Selected Modules:
-${selectedModuleTitles.map((t) => `• ${t}`).join("\n")}
-
-Looking forward to connecting!`;
+Looking forward to connecting!`.trim();
 
   const whatsappUrl = `https://wa.me/917875920111?text=${encodeURIComponent(rawMessage)}`;
 
