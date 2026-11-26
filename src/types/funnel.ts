@@ -1,6 +1,6 @@
 export type VerticalType = "b2b" | "webinar" | "leadmagnet" | "hybrid";
 
-export type FunnelLayer = "traffic" | "trust" | "qualifier" | "offer" | "delivery";
+export type FunnelLayer = "traffic" | "trust" | "qualifier" | "showup" | "offer" | "delivery";
 
 export interface FunnelNode {
   id: string;

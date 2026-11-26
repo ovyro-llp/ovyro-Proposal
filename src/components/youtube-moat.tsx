@@ -1,21 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
-import { Youtube, Flame, Shield, ArrowUpRight, CheckCircle2, Clock, Play, ExternalLink } from "lucide-react";
+import React from "react";
+import {
+  Youtube,
+  Flame,
+  Shield,
+  Clock,
+  CheckCircle2,
+  TrendingUp,
+  AlertTriangle,
+  Lock,
+  ArrowRight,
+  BarChart3,
+  DollarSign,
+  Sparkles
+} from "lucide-react";
 
 export function YoutubeMoat() {
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const chapters = [
-    { time: "00:00", title: "The 20 Calls/Day Benchmark & The Trust Recession" },
-    { time: "02:54", title: "The Google 7-11-4 Behavioral Rule Deconstructed" },
-    { time: "04:02", title: "Why the 1-Hour Funnel Fails (The Ghosting Cycle)" },
-    { time: "07:38", title: "YouTube as the 7-Hour Pre-Selling Anchor" },
-    { time: "18:00", title: "The Fortress Effect: Unbannable Brand Equity" },
-    { time: "22:38", title: "Free Built-In Algorithmic Retargeting" },
-    { time: "41:18", title: "The Client Conveyor System™ & Operational Scale" },
-  ];
-
   return (
     <section id="youtube-moat" className="py-20 bg-white border-b border-hairline">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,7 +24,7 @@ export function YoutubeMoat() {
         <div className="max-w-3xl mb-14">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-red-100 text-red-700 text-xs font-bold uppercase tracking-wider mb-3">
             <Youtube className="w-3.5 h-3.5 fill-red-600" />
-            <span>The OVYRO Core Lever · YouTube Binge Engine</span>
+            <span>The OVYRO Core Lever · The YouTube Trust Moat</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-ink tracking-tight">
             Why YouTube is the Unbreakable Anchor <br />
@@ -32,37 +33,37 @@ export function YoutubeMoat() {
             </span>
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate leading-relaxed">
-            Short-form content (Reels, TikToks) dies within 48 hours and builds shallow curiosity. YouTube is the only media platform on earth engineered for intentional, long-form binge watching—allowing prospects to consume 7+ hours of your frameworks before you ever ask for money.
+            Short-form content (Reels, TikToks) dies within 48 hours and generates shallow curiosity. YouTube is the only media engine on earth architected for long-form, intentional binge watching—allowing prospects to consume 7+ hours of your frameworks before you ever ask for money.
           </p>
         </div>
 
         {/* 3 Strategic Pillars of the YouTube Engine */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
-          <div className="p-6 rounded-xl bg-surface border border-hairline">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="p-6 rounded-xl bg-surface border border-hairline hover:border-hairline-strong transition">
             <div className="w-10 h-10 rounded-lg bg-red-50 text-red-600 flex items-center justify-center mb-4">
               <Clock className="w-5 h-5" />
             </div>
             <h3 className="text-base font-bold text-ink mb-2">
-              The 7-Hour Binge Experience
+              The 7-Hour Binge Loop
             </h3>
             <p className="text-sm text-slate leading-relaxed">
-              When a prospect watches a 25-minute breakdown, YouTube immediately queues up your next 3 videos. By the time they finish, they know your voice, your philosophy, and your track record better than their own team does.
+              When a prospect watches a 25-minute system teardown, YouTube immediately queues your next 3 videos. By the time they finish, they know your voice, your philosophy, and your track record better than their own team does.
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-surface border border-hairline">
+          <div className="p-6 rounded-xl bg-surface border border-hairline hover:border-hairline-strong transition">
             <div className="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">
               <Flame className="w-5 h-5" />
             </div>
             <h3 className="text-base font-bold text-ink mb-2">
-              Free Algorithmic Retargeting
+              Unpaid Algorithmic Retargeting
             </h3>
             <p className="text-sm text-slate leading-relaxed">
-              Unlike Meta where you pay for every single retargeted impression, YouTube’s recommendation algorithm organically places your new content right in front of active viewers on their homepage for months for zero cost.
+              Unlike Meta where you pay for every single retargeted impression, YouTube’s recommendation algorithm organically places your new content right in front of active viewers on their homepage for months at zero cost.
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-surface border border-hairline">
+          <div className="p-6 rounded-xl bg-surface border border-hairline hover:border-hairline-strong transition">
             <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">
               <Shield className="w-5 h-5" />
             </div>
@@ -70,107 +71,158 @@ export function YoutubeMoat() {
               Transfer-of-Trust Videos
             </h3>
             <p className="text-sm text-slate leading-relaxed">
-              We install custom post-booking greeting videos where the founder personally introduces the specific strategist taking the call—transferring 100% of the founder’s credibility directly to the closer.
+              We install custom post-booking greeting videos where the founder personally introduces the specific strategist taking the call—transferring 100% of founder authority directly to the sales team.
             </p>
           </div>
         </div>
 
-        {/* Master Video Breakdown Embed */}
-        <div className="p-7 sm:p-10 rounded-2xl bg-brand-navy text-white shadow-xl border border-slate-700/80 mb-14">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Left Column: Context & Chapters */}
-            <div className="lg:col-span-5 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-red-600/30 border border-red-500/40 text-red-300 text-xs font-bold uppercase tracking-wider">
-                <Youtube className="w-3.5 h-3.5 fill-red-400" />
-                <span>Founder Masterclass · 43 Min</span>
+        {/* The YouTube Compounding Engine & Fortress Economics Card */}
+        <div className="p-7 sm:p-10 rounded-2xl bg-brand-navy text-white shadow-xl border border-slate-700/80 mb-12">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 mb-8 border-b border-slate-700/60">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-red-600/30 border border-red-500/40 text-red-300 text-xs font-bold uppercase tracking-wider mb-2">
+                <BarChart3 className="w-3.5 h-3.5" />
+                <span>Fortress Economics · Proven Performance Math</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
-                Why You Cannot Close Clients: The RAD Funnel™ Deep Dive
+              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+                The RAD Funnel™ vs Traditional Paid Advertising
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Watch founder Hrushi break down the exact mathematics of 20 sales calls per day, the 7-11-4 Google benchmark, and how we eliminate 60-minute pitch calls.
-              </p>
-
-              {/* Chapters list */}
-              <div className="space-y-1.5 pt-2 border-t border-slate-700/60">
-                <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">
-                  Key Video Chapters:
-                </div>
-                {chapters.map((ch, i) => (
-                  <div key={i} className="flex items-center gap-2 text-xs text-slate-300">
-                    <span className="font-mono text-[11px] px-1.5 py-0.5 rounded bg-slate-800 text-primary font-bold">
-                      {ch.time}
-                    </span>
-                    <span className="truncate">{ch.title}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="pt-2">
-                <a
-                  href="https://www.youtube.com/watch?v=itcJ2dRZuSY"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-sky-400 hover:text-sky-300 transition"
-                >
-                  <span>Watch directly on YouTube</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-              </div>
             </div>
+            <div className="flex items-center gap-2 text-xs text-slate-300">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+              <span>Based on ₹2.5Cr+ in tracked ad spend & 7,100+ booked calls</span>
+            </div>
+          </div>
 
-            {/* Right Column: Embedded YouTube Video */}
-            <div className="lg:col-span-7">
-              <div className="relative aspect-video rounded-xl bg-slate-900 border border-slate-700 overflow-hidden shadow-2xl">
-                {isPlaying ? (
-                  <iframe
-                    src="https://www.youtube-nocookie.com/embed/itcJ2dRZuSY?autoplay=1&rel=0"
-                    title="Why You Cannot Close Clients ? — The OVYRO Method"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="w-full h-full border-0"
-                  />
-                ) : (
-                  <div
-                    onClick={() => setIsPlaying(true)}
-                    className="w-full h-full relative cursor-pointer group flex items-center justify-center bg-slate-950"
-                  >
-                    {/* High-res thumbnail preview */}
-                    <img
-                      src="https://img.youtube.com/vi/itcJ2dRZuSY/maxresdefault.jpg"
-                      alt="Why You Cannot Close Clients"
-                      className="w-full h-full object-cover opacity-85 group-hover:opacity-95 transition duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+          {/* Side-by-side comparison matrix */}
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-xs sm:text-sm">
+              <thead>
+                <tr className="border-b border-slate-700/80 text-slate-400 font-mono text-xs uppercase tracking-wider">
+                  <th className="pb-3.5 font-bold">Metric / Friction Point</th>
+                  <th className="pb-3.5 font-bold text-red-400">The Old 1-Hour Funnel (Meta Only)</th>
+                  <th className="pb-3.5 font-bold text-emerald-400">The OVYRO Method™ (YouTube Anchor)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800 text-slate-300">
+                <tr>
+                  <td className="py-3.5 font-semibold text-white">Top-of-Funnel Content Cost</td>
+                  <td className="py-3.5 text-slate-400">$15.00 – $30.00 / cold VSL view</td>
+                  <td className="py-3.5 text-emerald-300 font-bold">$0.17 / targeted video view</td>
+                </tr>
+                <tr>
+                  <td className="py-3.5 font-semibold text-white">7-Day Retargeting Cost</td>
+                  <td className="py-3.5 text-slate-400">$25.00+ per click with ad fatigue</td>
+                  <td className="py-3.5 text-emerald-300 font-bold">$0.32 (or $0.00 via YouTube algorithm)</td>
+                </tr>
+                <tr>
+                  <td className="py-3.5 font-semibold text-white">Pre-Call Prospect Exposure</td>
+                  <td className="py-3.5 text-slate-400">&lt; 1 Hour (5m email + cold discovery)</td>
+                  <td className="py-3.5 text-emerald-300 font-bold">7+ Hours across 11 touchpoints</td>
+                </tr>
+                <tr>
+                  <td className="py-3.5 font-semibold text-white">Consultation Show-Up Rate</td>
+                  <td className="py-3.5 text-slate-400">35% – 50% (High ghosting rate)</td>
+                  <td className="py-3.5 text-emerald-300 font-bold">&gt; 85% show-up via Show-Up VSL</td>
+                </tr>
+                <tr>
+                  <td className="py-3.5 font-semibold text-white">Sales Call Duration &amp; Dynamics</td>
+                  <td className="py-3.5 text-slate-400">60+ minute high-friction pitch grind</td>
+                  <td className="py-3.5 text-emerald-300 font-bold">20–30 min pre-sold order confirmation</td>
+                </tr>
+                <tr>
+                  <td className="py-3.5 font-semibold text-white">Ad Account Ban Vulnerability</td>
+                  <td className="py-3.5 text-red-400 font-semibold">1 arbitrary ban = zero business revenue</td>
+                  <td className="py-3.5 text-emerald-300 font-bold">Zero risk: permanent, owned brand moat</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-                    {/* Big Red YouTube Play Button */}
-                    <div className="absolute w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-red-600/95 text-white flex items-center justify-center shadow-2xl transform group-hover:scale-110 group-hover:bg-red-600 transition duration-200">
-                      <Play className="w-8 h-8 sm:w-9 sm:h-9 fill-white ml-1" />
-                    </div>
+          {/* 4-Step Algorithmic Binge Loop Workflow */}
+          <div className="mt-10 pt-8 border-t border-slate-700/60">
+            <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">
+              How the YouTube Algorithmic Binge Loop Works
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-5 h-5 rounded-full bg-primary text-white font-mono text-xs font-bold flex items-center justify-center">
+                    1
+                  </span>
+                  <span className="text-xs font-bold text-white">Single Problem Click</span>
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Prospect clicks 1 targeted ad or search result for an acute bottleneck.
+                </p>
+              </div>
 
-                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white">
-                      <div>
-                        <span className="font-bold block text-sm sm:text-base">
-                          Why You Cannot Close Clients ?
-                        </span>
-                        <span className="text-slate-300 text-xs">
-                          Radian Media / OVYRO · 43:51 Masterclass
-                        </span>
-                      </div>
-                      <span className="px-2.5 py-1 rounded bg-black/80 font-mono text-xs font-semibold">
-                        Click to Play
-                      </span>
-                    </div>
-                  </div>
-                )}
+              <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-5 h-5 rounded-full bg-primary text-white font-mono text-xs font-bold flex items-center justify-center">
+                    2
+                  </span>
+                  <span className="text-xs font-bold text-white">Algorithm Auto-Queues</span>
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  YouTube algorithm places 3–4 of your adjacent teardowns on their homepage and “Up Next” shelf.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-5 h-5 rounded-full bg-primary text-white font-mono text-xs font-bold flex items-center justify-center">
+                    3
+                  </span>
+                  <span className="text-xs font-bold text-white">7+ Hours Clocked</span>
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Prospect binge-watches your systems, learning your frameworks and validating your authority.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-5 h-5 rounded-full bg-emerald-500 text-white font-mono text-xs font-bold flex items-center justify-center">
+                    4
+                  </span>
+                  <span className="text-xs font-bold text-emerald-300">Pre-Sold Onboarding</span>
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  They arrive on the calendar pre-sold, qualified, respecting your pricing and ready to pay.
+                </p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Content Myth Buster Banner */}
-        <div className="p-7 sm:p-8 rounded-xl bg-surface border border-hairline">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        {/* Hormozi Brand Quote & Production Myth Buster */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          {/* Left: The Hormozi Brand Maxim */}
+          <div className="lg:col-span-5 p-7 rounded-xl bg-tint-yellow/40 border border-tint-yellow-bold flex flex-col justify-between">
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-amber-200/60 text-brand-orange-deep text-[11px] font-bold uppercase tracking-wider mb-3">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>The Unbreakable Brand Principle</span>
+              </div>
+              <blockquote className="text-base sm:text-lg font-bold text-ink leading-snug mb-3">
+                “The longer I do business, the longer I believe in a single truth: Brand &gt; Everything.”
+              </blockquote>
+              <div className="text-xs font-semibold text-slate mb-4">
+                — Alex Hormozi, Founder of Acquisition.com
+              </div>
+              <p className="text-xs sm:text-sm text-charcoal leading-relaxed">
+                If your only advantage is a Facebook ad and a claim that “you care more,” competitors will copy your hooks and drive a race to the bottom. An owned YouTube media brand creates an untouchable category fortress that cannot be cloned.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-amber-200/80 flex items-center gap-2 text-xs font-bold text-brand-orange-deep">
+              <Lock className="w-4 h-4" />
+              <span>Category Kings: Kylie ($1B), Rock ($800M), Hormozi, Gadzhi</span>
+            </div>
+          </div>
+
+          {/* Right: The Production Myth Debunked */}
+          <div className="lg:col-span-7 p-7 rounded-xl bg-surface border border-hairline flex flex-col justify-between">
             <div>
               <div className="text-xs font-bold text-primary uppercase tracking-wider mb-1">
                 The Production Myth Debunked
@@ -179,7 +231,7 @@ export function YoutubeMoat() {
                 “Do I need an expensive studio, cameras, or fancy editing?”
               </h3>
               <p className="text-sm text-slate leading-relaxed mb-4">
-                <strong>No. In fact, over-produced content hurts conversions.</strong> Prospects equate flashy cinematic b-roll with advertisements. In today’s hyper-skeptical market, raw, authentic screen-share breakdowns and high-conviction explanations outperform $10,000 studio productions by 300%+.
+                <strong>No. Over-produced content hurts B2B conversions.</strong> Decision-makers equate flashy cinematics with advertising. In today’s hyper-skeptical market, raw screen-share breakdowns, Lucidchart diagrams, and Notion walkthroughs outperform $10,000 studio productions by 300%+.
               </p>
               <div className="space-y-2 text-xs font-medium text-charcoal">
                 <div className="flex items-center gap-2">
@@ -197,21 +249,9 @@ export function YoutubeMoat() {
               </div>
             </div>
 
-            <div className="p-5 rounded-xl bg-white border border-hairline shadow-subtle space-y-3">
-              <div className="text-xs font-bold uppercase tracking-wider text-steel">
-                The Compounding Math of YouTube
-              </div>
-              <div className="space-y-2 text-xs text-charcoal leading-relaxed">
-                <p>
-                  • <strong>Instagram/TikTok:</strong> 50,000 views $\rightarrow$ 48-hour shelf life $\rightarrow$ 0 long-term compounding.
-                </p>
-                <p>
-                  • <strong>The OVYRO YouTube Engine:</strong> 1,500 targeted views $\rightarrow$ Evergreen search ranking $\rightarrow$ 7 hours consumed per buyer $\rightarrow$ Pre-sold $10,000+ retainers closed for years.
-                </p>
-              </div>
-              <div className="pt-2 border-t border-hairline text-[11px] font-bold text-primary">
-                Focus on depth of trust, not vanity views.
-              </div>
+            <div className="mt-5 p-4 rounded-lg bg-white border border-hairline shadow-subtle text-xs text-charcoal">
+              <strong className="text-primary block mb-1">The Compounding Math:</strong>
+              50,000 TikTok views vanish in 48 hours. 1,500 targeted YouTube breakdown views compound evergreen search rankings, educate hundreds of high-intent prospects, and close $10,000+ retainers for years.
             </div>
           </div>
         </div>

@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { FUNNEL_VERTICALS } from "@/data/funnel-topologies";
-import { VerticalType, FunnelNode } from "@/types/funnel";
+import { VerticalType, FunnelNode, FunnelLayer } from "@/types/funnel";
 import { VerticalSelector } from "./vertical-selector";
-import { Download, Info, Check, Sparkles, Filter } from "lucide-react";
+import { Download, Info, Check, Sparkles, Filter, Layers, Zap } from "lucide-react";
 
 export function FunnelArchitecture() {
   const [activeVertical, setActiveVertical] = useState<VerticalType>("b2b");
@@ -37,14 +37,20 @@ export function FunnelArchitecture() {
     });
   }
 
-  // Layers configuration
+  // Master Lanes configuration mapped to the OVYRO Method & masterclass
   const LANES = [
-    { id: "traffic", title: "1. ACQUISITION & MULTI-CHANNEL TRAFFIC", y: 20, h: 110, color: "#a855f7" },
-    { id: "trust", title: "2. THE OVYRO TRUST ANCHOR & YOUTUBE BINGE ENGINE", y: 150, h: 125, color: "#5645d4" },
-    { id: "qualifier", title: "3. ZERO-FRICTION LANDER & MULTI-STEP QUALIFIER", y: 295, h: 125, color: "#3b82f6" },
-    { id: "offer", title: "4. HIGH-CONVERTING OFFER & ORDER-CONFIRMATION CALL", y: 440, h: 125, color: "#f59e0b" },
-    { id: "delivery", title: "5. CLIENT CONVEYOR SYSTEM™ & RETENTION ENGINE", y: 585, h: 135, color: "#10b981" },
+    { id: "traffic", title: "1. ACQUISITION: MULTI-CHANNEL TRAFFIC & SEARCH INTENT", y: 15, h: 100, color: "#a855f7" },
+    { id: "trust", title: "2. THE OVYRO TRUST ANCHOR: YOUTUBE BINGE ENGINE (7-11-4)", y: 140, h: 115, color: "#ef4444" },
+    { id: "qualifier", title: "3. ZERO-FRICTION LANDER, VSL & MULTI-STEP QUALIFIER", y: 280, h: 120, color: "#3b82f6" },
+    { id: "showup", title: "4. PRE-CALL SHOW-UP FORTRESS & QUALIFICATION MATRIX", y: 425, h: 125, color: "#10b981" },
+    { id: "offer", title: "5. PRE-SOLD ORDER CALL, CASH COLLECTION & CLIENT CONVEYOR", y: 575, h: 135, color: "#f59e0b" },
   ];
+
+  const isNodeVisibleInFilter = (nodeLayer: FunnelLayer) => {
+    if (activeLayerFilter === "all") return true;
+    if (activeLayerFilter === "offer") return nodeLayer === "offer" || nodeLayer === "delivery";
+    return activeLayerFilter === nodeLayer;
+  };
 
   // Helper to compute smooth curved paths between nodes
   const getEdgePath = (fromId: string, toId: string) => {
@@ -75,20 +81,20 @@ export function FunnelArchitecture() {
     const svgEl = svgRef.current;
     const serializer = new XMLSerializer();
     const clone = svgEl.cloneNode(true) as SVGSVGElement;
-    clone.setAttribute("width", "2400");
-    clone.setAttribute("height", "1520");
+    clone.setAttribute("width", "3040");
+    clone.setAttribute("height", "1480");
 
     // Add inline styling for crisp rendering
     const style = document.createElementNS("http://www.w3.org/2000/svg", "style");
     style.textContent = `
       .lane-box { fill: #111827; stroke: #1e293b; stroke-width: 1; rx: 8; }
-      .lane-label { font-family: sans-serif; font-size: 11px; font-weight: 700; fill: #94a3b8; }
+      .lane-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11px; font-weight: 700; fill: #94a3b8; }
       .funnel-edge { fill: none; stroke: #475569; stroke-width: 1.5; opacity: 0.65; }
       .node-box { fill: #131c31; stroke-width: 1.6; rx: 8; }
-      .node-text-title { font-family: sans-serif; font-size: 11.5px; font-weight: 700; fill: #ffffff; }
-      .node-text-sub { font-family: sans-serif; font-size: 10px; fill: #94a3b8; }
+      .node-text-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 11.5px; font-weight: 700; fill: #ffffff; }
+      .node-text-sub { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 10px; fill: #94a3b8; }
       .badge-box { rx: 4; }
-      .badge-txt { font-family: sans-serif; font-size: 9.5px; font-weight: 700; fill: #ffffff; text-anchor: middle; }
+      .badge-txt { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 9.5px; font-weight: 700; fill: #ffffff; text-anchor: middle; }
     `;
     clone.insertBefore(style, clone.firstChild);
 
@@ -98,8 +104,8 @@ export function FunnelArchitecture() {
     const img = new Image();
     img.onload = () => {
       const canvas = document.createElement("canvas");
-      canvas.width = 2400;
-      canvas.height = 1520;
+      canvas.width = 3040;
+      canvas.height = 1480;
       const ctx = canvas.getContext("2d");
       if (ctx) {
         ctx.fillStyle = "#0b0f19";
@@ -107,7 +113,7 @@ export function FunnelArchitecture() {
         ctx.drawImage(img, 0, 0);
         URL.revokeObjectURL(url);
         const a = document.createElement("a");
-        a.download = `ovyro-${activeVertical}-funnel-architecture.png`;
+        a.download = `ovyro-${activeVertical}-rad-funnel-architecture.png`;
         a.href = canvas.toDataURL("image/png");
         a.click();
       }
@@ -122,13 +128,14 @@ export function FunnelArchitecture() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-tint-mint text-brand-green text-xs font-bold uppercase tracking-wider mb-2">
-              <span>Interactive System Blueprint · The OVYRO Method™</span>
+              <Zap className="w-3.5 h-3.5" />
+              <span>Interactive Architecture · Master OVYRO System Blueprint</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-ink tracking-tight">
               Interactive Funnel Architecture
             </h2>
             <p className="mt-2 text-sm sm:text-base text-slate max-w-2xl">
-              Explore the exact conversion mechanics for your business model. Click or hover any node to trace active upstream traffic sources and downstream conversion destinations.
+              The exact system architecture engineered by OVYRO. Click or hover any node to trace upstream traffic sources and downstream conversion pathways across all 5 operational layers.
             </p>
           </div>
 
@@ -139,7 +146,7 @@ export function FunnelArchitecture() {
               className="inline-flex items-center gap-1.5 bg-brand-navy hover:bg-brand-navy-mid text-white text-xs font-semibold px-4 py-2.5 rounded-md shadow-sm transition"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Download 2x PNG</span>
+              <span>Download High-Res 2x PNG</span>
             </button>
           </div>
         </div>
@@ -156,11 +163,11 @@ export function FunnelArchitecture() {
           {/* Top Inspector Strip */}
           <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 border-b border-slate-700/60 text-xs">
             <div className="flex items-center gap-2 text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-primary animate-ping" />
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
               <span className="font-mono text-slate-200 font-semibold">
                 {activeNode
                   ? `${activeNode.title} — ${inCount} Inbound · ${outCount} Outbound Pathways`
-                  : `Showing all ${current.nodes.length} nodes · ${current.edges.length} directed pathways`}
+                  : `Showing all ${current.nodes.length} nodes · ${current.edges.length} active pathways`}
               </span>
             </div>
 
@@ -178,7 +185,7 @@ export function FunnelArchitecture() {
                 <button
                   key={lane.id}
                   onClick={() => setActiveLayerFilter(lane.id)}
-                  className={`px-2.5 py-1 rounded font-medium transition ${
+                  className={`px-2.5 py-1 rounded font-medium transition whitespace-nowrap ${
                     activeLayerFilter === lane.id
                       ? "bg-slate-700 text-white font-bold"
                       : "bg-slate-800/70 text-slate-400 hover:text-white"
@@ -190,12 +197,12 @@ export function FunnelArchitecture() {
             </div>
           </div>
 
-          {/* SVG Canvas */}
-          <div className="overflow-x-auto">
+          {/* SVG Canvas with Horizontal Scroll Support */}
+          <div className="overflow-x-auto pb-2">
             <svg
               ref={svgRef}
-              viewBox="0 0 1180 740"
-              className="w-full min-w-[1000px] h-[720px] select-none"
+              viewBox="0 0 1520 740"
+              className="w-full min-w-[1240px] h-[730px] select-none"
               style={{
                 background: "radial-gradient(circle at 50% 0%, #152238 0%, #0a1120 100%)",
                 borderRadius: "12px",
@@ -234,7 +241,7 @@ export function FunnelArchitecture() {
                   <rect
                     x={14}
                     y={lane.y}
-                    width={1152}
+                    width={1492}
                     height={lane.h}
                     rx={8}
                     className="lane-box"
@@ -259,36 +266,40 @@ export function FunnelArchitecture() {
               {/* Directed Edges */}
               <g id="edgesGroup">
                 {current.edges.map((edge, idx) => {
-                  const isHighlighted =
+                  const pathD = getEdgePath(edge.from, edge.to);
+                  if (!pathD) return null;
+
+                  const isConnected =
                     activeNodeId && (edge.from === activeNodeId || edge.to === activeNodeId);
-                  const isDimmed = activeNodeId && !isHighlighted;
-                  const d = getEdgePath(edge.from, edge.to);
+                  const isDimmed = activeNodeId && !isConnected;
 
                   return (
                     <path
                       key={idx}
-                      d={d}
-                      className={`funnel-edge ${isHighlighted ? "highlighted" : ""} ${
+                      d={pathD}
+                      className={`funnel-edge ${isConnected ? "highlighted" : ""} ${
                         isDimmed ? "dimmed" : ""
                       }`}
-                      markerEnd={isHighlighted ? "url(#arrowHi)" : "url(#arrow)"}
+                      markerEnd={isConnected ? "url(#arrowHi)" : "url(#arrow)"}
                     />
                   );
                 })}
               </g>
 
-              {/* Nodes */}
+              {/* Funnel Nodes */}
               <g id="nodesGroup">
                 {current.nodes.map((node) => {
-                  const isConnected = !activeNodeId || connectedNodeIds.has(node.id);
-                  const isSelected = activeNodeId === node.id;
-                  const isFiltered = activeLayerFilter === "all" || node.layer === activeLayerFilter;
-                  const color = node.badgeColor || "#5645d4";
+                  const isFiltered = !isNodeVisibleInFilter(node.layer);
+                  const isSelected = selectedNodeId === node.id;
+                  const isHovered = hoveredNodeId === node.id;
+                  const isConnected = connectedNodeIds.has(node.id);
+                  const isDimmed = activeNodeId ? !isConnected : isFiltered;
 
                   return (
                     <g
                       key={node.id}
-                      className={`funnel-node ${!isConnected || !isFiltered ? "dimmed" : ""} ${
+                      transform={`translate(${node.x - node.w / 2}, ${node.y - node.h / 2})`}
+                      className={`funnel-node ${isDimmed ? "dimmed" : ""} ${
                         isSelected ? "selected" : ""
                       }`}
                       onMouseEnter={() => setHoveredNodeId(node.id)}
@@ -299,75 +310,70 @@ export function FunnelArchitecture() {
                     >
                       {/* Node Box */}
                       <rect
-                        x={node.x - node.w / 2}
-                        y={node.y - node.h / 2}
                         width={node.w}
                         height={node.h}
                         rx={8}
                         className="node-box"
                         fill="#131c31"
-                        stroke={color}
-                        strokeWidth={isSelected ? 2.4 : 1.5}
+                        stroke={
+                          isSelected || isHovered
+                            ? "#38bdf8"
+                            : isConnected && activeNodeId
+                            ? "#818cf8"
+                            : node.badgeColor || "#334155"
+                        }
+                        strokeWidth={isSelected || isHovered ? 2.5 : 1.5}
                       />
 
-                      {/* Left accent indicator strip */}
-                      <rect
-                        x={node.x - node.w / 2}
-                        y={node.y - node.h / 2}
-                        width={4.5}
-                        height={node.h}
-                        fill={color}
-                        rx={2.5}
-                      />
-
-                      {/* Title */}
-                      <text
-                        x={node.x - node.w / 2 + 14}
-                        y={node.y - 3}
-                        className="node-text-title"
-                        fill="#f8fafc"
-                        fontSize="11.5"
-                        fontWeight="700"
-                      >
-                        {node.title}
-                      </text>
-
-                      {/* Subtitle */}
-                      <text
-                        x={node.x - node.w / 2 + 14}
-                        y={node.y + 13}
-                        className="node-text-sub"
-                        fill="#94a3b8"
-                        fontSize="9.5"
-                      >
-                        {node.subtitle}
-                      </text>
-
-                      {/* Badge Pill */}
+                      {/* Badge if present */}
                       {node.badge && (
-                        <g>
+                        <g transform={`translate(${node.w - 8}, 0)`}>
                           <rect
-                            x={node.x + node.w / 2 - 62}
-                            y={node.y - node.h / 2 - 8}
-                            width={56}
-                            height={16}
+                            x={-node.badge.length * 6.5 - 12}
+                            y={-9}
+                            width={node.badge.length * 6.5 + 16}
+                            height={18}
                             rx={4}
+                            fill={node.badgeColor || "#3b82f6"}
                             className="badge-box"
-                            fill={color}
                           />
                           <text
-                            x={node.x + node.w / 2 - 34}
-                            y={node.y - node.h / 2 + 4}
+                            x={-((node.badge.length * 6.5 + 16) / 2) + 2}
+                            y={4}
                             className="badge-txt"
                             fill="#ffffff"
-                            fontSize="8.5"
+                            fontSize="9"
                             fontWeight="800"
+                            letterSpacing="0.04em"
                             textAnchor="middle"
                           >
                             {node.badge}
                           </text>
                         </g>
                       )}
+
+                      {/* Node Title */}
+                      <text
+                        x={14}
+                        y={21}
+                        className="node-text-title"
+                        fill="#ffffff"
+                        fontSize="11.5"
+                        fontWeight="700"
+                      >
+                        {node.title}
+                      </text>
+
+                      {/* Node Subtitle */}
+                      <text
+                        x={14}
+                        y={36}
+                        className="node-text-sub"
+                        fill="#94a3b8"
+                        fontSize="9.5"
+                      >
+                        {node.subtitle}
+                      </text>
                     </g>
                   );
                 })}
@@ -375,35 +381,92 @@ export function FunnelArchitecture() {
             </svg>
           </div>
 
-          {/* Active Node Detail Card below SVG */}
-          {activeNode && (
-            <div className="mt-4 p-4 rounded-xl bg-slate-900/90 border border-slate-700 text-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
-              <div className="flex-1">
-                <div className="flex items-center gap-2">
-                  <span className="font-bold text-white text-sm">{activeNode.title}</span>
-                  <span
-                    className="px-2 py-0.5 rounded text-[10px] font-bold text-white"
-                    style={{ backgroundColor: activeNode.badgeColor || "#5645d4" }}
-                  >
-                    {activeNode.layer.toUpperCase()}
-                  </span>
+          {/* Node Inspector Card / Drawer */}
+          <div className="mt-4 pt-4 border-t border-slate-700/60">
+            {activeNode ? (
+              <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-700 text-slate-200">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                  <div className="flex items-center gap-2.5">
+                    <span
+                      className="px-2 py-0.5 rounded text-[10px] font-extrabold uppercase tracking-wider text-white"
+                      style={{ backgroundColor: activeNode.badgeColor || "#5645d4" }}
+                    >
+                      {activeNode.badge || activeNode.layer.toUpperCase()}
+                    </span>
+                    <h4 className="text-base font-bold text-white">
+                      {activeNode.title}
+                    </h4>
+                  </div>
                   {activeNode.stats && (
-                    <span className="text-[11px] font-semibold text-emerald-400">
-                      ★ {activeNode.stats}
+                    <span className="px-2.5 py-1 rounded bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 font-mono text-xs font-semibold">
+                      {activeNode.stats}
                     </span>
                   )}
                 </div>
-                <p className="mt-1 text-slate-300 text-xs leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-3">
                   {activeNode.description}
                 </p>
+
+                {/* Inbound & Outbound Connections summary */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-3 border-t border-slate-800">
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                      Inbound Sources ({inCount})
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {current.edges
+                        .filter((e) => e.to === activeNode.id)
+                        .map((e, idx) => {
+                          const src = current.nodes.find((n) => n.id === e.from);
+                          return (
+                            <span
+                              key={idx}
+                              className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[11px]"
+                            >
+                              ← {src?.title || e.from}
+                            </span>
+                          );
+                        })}
+                      {inCount === 0 && (
+                        <span className="text-slate-500 italic text-[11px]">Top of Funnel Entry Point</span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                      Downstream Conversions ({outCount})
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {current.edges
+                        .filter((e) => e.from === activeNode.id)
+                        .map((e, idx) => {
+                          const dest = current.nodes.find((n) => n.id === e.to);
+                          return (
+                            <span
+                              key={idx}
+                              className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-[11px]"
+                            >
+                              → {dest?.title || e.to}
+                            </span>
+                          );
+                        })}
+                      {outCount === 0 && (
+                        <span className="text-slate-500 italic text-[11px]">Final Delivery & Fulfillment</span>
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center gap-3 shrink-0 text-slate-400 font-mono text-[11px]">
-                <span>Inbound: <strong className="text-white">{inCount}</strong></span>
-                <span>•</span>
-                <span>Outbound: <strong className="text-white">{outCount}</strong></span>
+            ) : (
+              <div className="flex items-center gap-2 text-xs text-slate-400 p-2">
+                <Info className="w-4 h-4 text-primary shrink-0" />
+                <span>
+                  Tip: Hover or click on any node to isolate its complete active conversion path, see inbound traffic drivers, and inspect downstream conversion mechanics.
+                </span>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </section>
