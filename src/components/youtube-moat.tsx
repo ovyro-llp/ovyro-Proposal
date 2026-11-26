@@ -46,7 +46,7 @@ export function YoutubeMoat() {
             <h3 className="text-base font-bold text-ink mb-2">
               The 7-Hour Binge Loop
             </h3>
-            <p className="text-sm text-slate leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate leading-relaxed">
               When a prospect watches a 25-minute system teardown, YouTube immediately queues your next 3 videos. By the time they finish, they know your voice, your philosophy, and your track record better than their own team does.
             </p>
           </div>
@@ -58,7 +58,7 @@ export function YoutubeMoat() {
             <h3 className="text-base font-bold text-ink mb-2">
               Unpaid Algorithmic Retargeting
             </h3>
-            <p className="text-sm text-slate leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate leading-relaxed">
               Unlike Meta where you pay for every single retargeted impression, YouTube’s recommendation algorithm organically places your new content right in front of active viewers on their homepage for months at zero cost.
             </p>
           </div>
@@ -70,127 +70,148 @@ export function YoutubeMoat() {
             <h3 className="text-base font-bold text-ink mb-2">
               Transfer-of-Trust Videos
             </h3>
-            <p className="text-sm text-slate leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate leading-relaxed">
               We install custom post-booking greeting videos where the founder personally introduces the specific strategist taking the call—transferring 100% of founder authority directly to the sales team.
             </p>
           </div>
         </div>
 
-        {/* The YouTube Compounding Engine & Fortress Economics Card */}
+        {/* Visual Proof of the YouTube Recommendation Machine (Direct from Google Doc) */}
         <div className="p-7 sm:p-10 rounded-2xl bg-brand-navy text-white shadow-xl border border-slate-700/80 mb-12">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 mb-8 border-b border-slate-700/60">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-red-600/30 border border-red-500/40 text-red-300 text-xs font-bold uppercase tracking-wider mb-2">
-                <BarChart3 className="w-3.5 h-3.5" />
-                <span>Fortress Economics · Proven Performance Math</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-8">
+            <div className="lg:col-span-5 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-red-600/30 border border-red-500/40 text-red-300 text-xs font-bold uppercase tracking-wider">
+                <Youtube className="w-3.5 h-3.5 fill-red-400" />
+                <span>The Recommendation Engine in Action</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-                The RAD Funnel™ vs Traditional Paid Advertising
+              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
+                How YouTube Creates Free Perpetual Retargeting
               </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                When a user watches a breakdown on YouTube, the recommendation algorithm queues up multiple related videos directly on their homepage and in the sidebar. We design every video title, thumbnail, and chapter to hijack this exact mechanism.
+              </p>
+              <div className="p-3 rounded-lg bg-slate-900/90 border border-slate-700/80 text-xs space-y-1.5 font-mono">
+                <div className="text-emerald-400 font-bold flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>Free Algorithmic Retargeting</span>
+                </div>
+                <div className="text-slate-400 text-[11px]">
+                  Zero ad spend needed to keep your brand in front of warm buyers for 30–90 days.
+                </div>
+              </div>
             </div>
-            <div className="flex items-center gap-2 text-xs text-slate-300">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-              <span>Based on ₹2.5Cr+ in tracked ad spend & 7,100+ booked calls</span>
+
+            {/* Embedded Screenshot from Google Doc: YouTube Algorithm Suggested Videos */}
+            <div className="lg:col-span-7">
+              <div className="rounded-xl overflow-hidden border border-slate-700 bg-slate-950 shadow-2xl">
+                <div className="px-3 py-2 bg-slate-900 border-b border-slate-800 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                  <span>YouTube Algorithmic Binge Loop (Sidebar Recommendation)</span>
+                  <span className="text-emerald-400">Organic Retargeting: ACTIVE</span>
+                </div>
+                <img
+                  src="/images/gdoc/img_8.png"
+                  alt="YouTube Algorithmic Recommendation Machine"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
             </div>
           </div>
 
-          {/* Side-by-side comparison matrix */}
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs sm:text-sm">
-              <thead>
-                <tr className="border-b border-slate-700/80 text-slate-400 font-mono text-xs uppercase tracking-wider">
-                  <th className="pb-3.5 font-bold">Metric / Friction Point</th>
-                  <th className="pb-3.5 font-bold text-red-400">The Old 1-Hour Funnel (Meta Only)</th>
-                  <th className="pb-3.5 font-bold text-emerald-400">The OVYRO Method™ (YouTube Anchor)</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-800 text-slate-300">
-                <tr>
-                  <td className="py-3.5 font-semibold text-white">Top-of-Funnel Content Cost</td>
-                  <td className="py-3.5 text-slate-400">$15.00 – $30.00 / cold VSL view</td>
-                  <td className="py-3.5 text-emerald-300 font-bold">$0.17 / targeted video view</td>
-                </tr>
-                <tr>
-                  <td className="py-3.5 font-semibold text-white">7-Day Retargeting Cost</td>
-                  <td className="py-3.5 text-slate-400">$25.00+ per click with ad fatigue</td>
-                  <td className="py-3.5 text-emerald-300 font-bold">$0.32 (or $0.00 via YouTube algorithm)</td>
-                </tr>
-                <tr>
-                  <td className="py-3.5 font-semibold text-white">Pre-Call Prospect Exposure</td>
-                  <td className="py-3.5 text-slate-400">&lt; 1 Hour (5m email + cold discovery)</td>
-                  <td className="py-3.5 text-emerald-300 font-bold">7+ Hours across 11 touchpoints</td>
-                </tr>
-                <tr>
-                  <td className="py-3.5 font-semibold text-white">Consultation Show-Up Rate</td>
-                  <td className="py-3.5 text-slate-400">35% – 50% (High ghosting rate)</td>
-                  <td className="py-3.5 text-emerald-300 font-bold">&gt; 85% show-up via Show-Up VSL</td>
-                </tr>
-                <tr>
-                  <td className="py-3.5 font-semibold text-white">Sales Call Duration &amp; Dynamics</td>
-                  <td className="py-3.5 text-slate-400">60+ minute high-friction pitch grind</td>
-                  <td className="py-3.5 text-emerald-300 font-bold">20–30 min pre-sold order confirmation</td>
-                </tr>
-                <tr>
-                  <td className="py-3.5 font-semibold text-white">Ad Account Ban Vulnerability</td>
-                  <td className="py-3.5 text-red-400 font-semibold">1 arbitrary ban = zero business revenue</td>
-                  <td className="py-3.5 text-emerald-300 font-bold">Zero risk: permanent, owned brand moat</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          {/* Performance Economics Table with Embedded Real CPV Proof */}
+          <div className="pt-8 border-t border-slate-700/80">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+              <div>
+                <h4 className="text-lg font-bold text-white">
+                  The Economics: RAD Funnel™ vs Traditional Paid Advertising
+                </h4>
+                <p className="text-xs text-slate-400">
+                  Verified advertising metrics across ₹2.5Cr+ testing and deployment
+                </p>
+              </div>
 
-          {/* 4-Step Algorithmic Binge Loop Workflow */}
-          <div className="mt-10 pt-8 border-t border-slate-700/60">
-            <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4">
-              How the YouTube Algorithmic Binge Loop Works
+              {/* Embedded CPV Proof from Google Doc */}
+              <div className="flex items-center gap-3 p-2 px-3 rounded-lg bg-slate-900 border border-slate-700">
+                <img
+                  src="/images/gdoc/img_12.png"
+                  alt="Google Ads CPV Proof: $0.177 avg CPV"
+                  className="h-10 w-auto rounded border border-slate-700 object-contain"
+                />
+                <div className="text-xs">
+                  <span className="text-emerald-400 font-extrabold block text-sm">$0.177 CPV</span>
+                  <span className="text-slate-400 text-[10px]">Tracked Top-of-Funnel Cost</span>
+                </div>
+              </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="w-5 h-5 rounded-full bg-primary text-white font-mono text-xs font-bold flex items-center justify-center">
-                    1
-                  </span>
-                  <span className="text-xs font-bold text-white">Single Problem Click</span>
+
+            {/* Comparison Matrix */}
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs sm:text-sm">
+                <thead>
+                  <tr className="border-b border-slate-700/80 text-slate-400 font-mono text-xs uppercase tracking-wider">
+                    <th className="pb-3.5 font-bold">Metric / Friction Point</th>
+                    <th className="pb-3.5 font-bold text-red-400">The Old 1-Hour Funnel (Meta Only)</th>
+                    <th className="pb-3.5 font-bold text-emerald-400">The OVYRO Method™ (YouTube Anchor)</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800 text-slate-300">
+                  <tr>
+                    <td className="py-3.5 font-semibold text-white">Top-of-Funnel Content Cost</td>
+                    <td className="py-3.5 text-slate-400">$15.00 – $30.00 / cold VSL view</td>
+                    <td className="py-3.5 text-emerald-300 font-bold">$0.17 / targeted video view</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3.5 font-semibold text-white">7-Day Retargeting Cost</td>
+                    <td className="py-3.5 text-slate-400">$25.00+ per click with ad fatigue</td>
+                    <td className="py-3.5 text-emerald-300 font-bold">$0.32 (or $0.00 via YouTube algorithm)</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3.5 font-semibold text-white">Pre-Call Prospect Exposure</td>
+                    <td className="py-3.5 text-slate-400">&lt; 1 Hour (5m email + cold discovery)</td>
+                    <td className="py-3.5 text-emerald-300 font-bold">7+ Hours across 11 touchpoints</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3.5 font-semibold text-white">Consultation Show-Up Rate</td>
+                    <td className="py-3.5 text-slate-400">35% – 50% (High ghosting rate)</td>
+                    <td className="py-3.5 text-emerald-300 font-bold">&gt; 85% show-up via Show-Up VSL</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3.5 font-semibold text-white">Sales Call Duration &amp; Dynamics</td>
+                    <td className="py-3.5 text-slate-400">60+ minute high-friction pitch grind</td>
+                    <td className="py-3.5 text-emerald-300 font-bold">20–30 min pre-sold order confirmation</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3.5 font-semibold text-white">Ad Account Ban Vulnerability</td>
+                    <td className="py-3.5 text-red-400 font-semibold">1 arbitrary ban = zero business revenue</td>
+                    <td className="py-3.5 text-emerald-300 font-bold">Zero risk: permanent, owned brand moat</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            {/* Realtime Engagement Proof Strip from Google Doc */}
+            <div className="mt-8 pt-6 border-t border-slate-700/60 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="p-3 rounded-lg bg-slate-900/90 border border-slate-800 flex items-center gap-3">
+                <img
+                  src="/images/gdoc/img_7.png"
+                  alt="YouTube Realtime Views: 26,311 Views"
+                  className="w-32 h-auto rounded border border-slate-700 object-contain"
+                />
+                <div className="text-xs">
+                  <span className="font-extrabold text-white block text-sm">26,311 Realtime Views</span>
+                  <span className="text-slate-400 text-[11px]">Compounding organic traffic without paying for additional media.</span>
                 </div>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  Prospect clicks 1 targeted ad or search result for an acute bottleneck.
-                </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="w-5 h-5 rounded-full bg-primary text-white font-mono text-xs font-bold flex items-center justify-center">
-                    2
-                  </span>
-                  <span className="text-xs font-bold text-white">Algorithm Auto-Queues</span>
+              <div className="p-3 rounded-lg bg-slate-900/90 border border-slate-800 flex items-center gap-3">
+                <img
+                  src="/images/gdoc/img_6.png"
+                  alt="YouTube Average View Duration: 5:49"
+                  className="w-20 h-auto rounded border border-slate-700 object-contain"
+                />
+                <div className="text-xs">
+                  <span className="font-extrabold text-white block text-sm">5:49 Avg View Duration</span>
+                  <span className="text-slate-400 text-[11px]">High intentional retention clocking hours of pre-call authority.</span>
                 </div>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  YouTube algorithm places 3–4 of your adjacent teardowns on their homepage and “Up Next” shelf.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="w-5 h-5 rounded-full bg-primary text-white font-mono text-xs font-bold flex items-center justify-center">
-                    3
-                  </span>
-                  <span className="text-xs font-bold text-white">7+ Hours Clocked</span>
-                </div>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  Prospect binge-watches your systems, learning your frameworks and validating your authority.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="w-5 h-5 rounded-full bg-emerald-500 text-white font-mono text-xs font-bold flex items-center justify-center">
-                    4
-                  </span>
-                  <span className="text-xs font-bold text-emerald-300">Pre-Sold Onboarding</span>
-                </div>
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  They arrive on the calendar pre-sold, qualified, respecting your pricing and ready to pay.
-                </p>
               </div>
             </div>
           </div>
@@ -198,21 +219,25 @@ export function YoutubeMoat() {
 
         {/* Hormozi Brand Quote & Production Myth Buster */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          {/* Left: The Hormozi Brand Maxim */}
+          {/* Left: The Hormozi Brand Maxim + Tweet Proof */}
           <div className="lg:col-span-5 p-7 rounded-xl bg-tint-yellow/40 border border-tint-yellow-bold flex flex-col justify-between">
             <div>
               <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-amber-200/60 text-brand-orange-deep text-[11px] font-bold uppercase tracking-wider mb-3">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>The Unbreakable Brand Principle</span>
               </div>
-              <blockquote className="text-base sm:text-lg font-bold text-ink leading-snug mb-3">
-                “The longer I do business, the longer I believe in a single truth: Brand &gt; Everything.”
-              </blockquote>
-              <div className="text-xs font-semibold text-slate mb-4">
-                — Alex Hormozi, Founder of Acquisition.com
+              
+              {/* Embedded Tweet Image from Google Doc */}
+              <div className="mb-4 rounded-lg overflow-hidden border border-amber-300/80 bg-white shadow-subtle p-2">
+                <img
+                  src="/images/gdoc/img_3.png"
+                  alt="Alex Hormozi Tweet: Brand >"
+                  className="w-full h-auto object-contain rounded"
+                />
               </div>
+
               <p className="text-xs sm:text-sm text-charcoal leading-relaxed">
-                If your only advantage is a Facebook ad and a claim that “you care more,” competitors will copy your hooks and drive a race to the bottom. An owned YouTube media brand creates an untouchable category fortress that cannot be cloned.
+                If your only advantage is a Facebook ad and a claim that “you care more,” competitors will clone your hooks and trigger a race to the bottom. An owned YouTube media brand creates an untouchable category fortress that cannot be cloned.
               </p>
             </div>
             <div className="mt-4 pt-3 border-t border-amber-200/80 flex items-center gap-2 text-xs font-bold text-brand-orange-deep">
