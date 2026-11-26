@@ -1,7 +1,21 @@
-import React from "react";
-import { Youtube, Flame, Shield, ArrowUpRight, CheckCircle2, Clock, Play } from "lucide-react";
+"use client";
+
+import React, { useState } from "react";
+import { Youtube, Flame, Shield, ArrowUpRight, CheckCircle2, Clock, Play, ExternalLink } from "lucide-react";
 
 export function YoutubeMoat() {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const chapters = [
+    { time: "00:00", title: "The 20 Calls/Day Benchmark & The Trust Recession" },
+    { time: "02:54", title: "The Google 7-11-4 Behavioral Rule Deconstructed" },
+    { time: "04:02", title: "Why the 1-Hour Funnel Fails (The Ghosting Cycle)" },
+    { time: "07:38", title: "YouTube as the 7-Hour Pre-Selling Anchor" },
+    { time: "18:00", title: "The Fortress Effect: Unbannable Brand Equity" },
+    { time: "22:38", title: "Free Built-In Algorithmic Retargeting" },
+    { time: "41:18", title: "The Client Conveyor System™ & Operational Scale" },
+  ];
+
   return (
     <section id="youtube-moat" className="py-20 bg-white border-b border-hairline">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -61,6 +75,99 @@ export function YoutubeMoat() {
           </div>
         </div>
 
+        {/* Master Video Breakdown Embed */}
+        <div className="p-7 sm:p-10 rounded-2xl bg-brand-navy text-white shadow-xl border border-slate-700/80 mb-14">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left Column: Context & Chapters */}
+            <div className="lg:col-span-5 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-red-600/30 border border-red-500/40 text-red-300 text-xs font-bold uppercase tracking-wider">
+                <Youtube className="w-3.5 h-3.5 fill-red-400" />
+                <span>Founder Masterclass · 43 Min</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
+                Why You Cannot Close Clients: The RAD Funnel™ Deep Dive
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Watch founder Hrushi break down the exact mathematics of 20 sales calls per day, the 7-11-4 Google benchmark, and how we eliminate 60-minute pitch calls.
+              </p>
+
+              {/* Chapters list */}
+              <div className="space-y-1.5 pt-2 border-t border-slate-700/60">
+                <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                  Key Video Chapters:
+                </div>
+                {chapters.map((ch, i) => (
+                  <div key={i} className="flex items-center gap-2 text-xs text-slate-300">
+                    <span className="font-mono text-[11px] px-1.5 py-0.5 rounded bg-slate-800 text-primary font-bold">
+                      {ch.time}
+                    </span>
+                    <span className="truncate">{ch.title}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-2">
+                <a
+                  href="https://www.youtube.com/watch?v=itcJ2dRZuSY"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-sky-400 hover:text-sky-300 transition"
+                >
+                  <span>Watch directly on YouTube</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: Embedded YouTube Video */}
+            <div className="lg:col-span-7">
+              <div className="relative aspect-video rounded-xl bg-slate-900 border border-slate-700 overflow-hidden shadow-2xl">
+                {isPlaying ? (
+                  <iframe
+                    src="https://www.youtube-nocookie.com/embed/itcJ2dRZuSY?autoplay=1&rel=0"
+                    title="Why You Cannot Close Clients ? — The OVYRO Method"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full border-0"
+                  />
+                ) : (
+                  <div
+                    onClick={() => setIsPlaying(true)}
+                    className="w-full h-full relative cursor-pointer group flex items-center justify-center bg-slate-950"
+                  >
+                    {/* High-res thumbnail preview */}
+                    <img
+                      src="https://img.youtube.com/vi/itcJ2dRZuSY/maxresdefault.jpg"
+                      alt="Why You Cannot Close Clients"
+                      className="w-full h-full object-cover opacity-85 group-hover:opacity-95 transition duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+                    {/* Big Red YouTube Play Button */}
+                    <div className="absolute w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-red-600/95 text-white flex items-center justify-center shadow-2xl transform group-hover:scale-110 group-hover:bg-red-600 transition duration-200">
+                      <Play className="w-8 h-8 sm:w-9 sm:h-9 fill-white ml-1" />
+                    </div>
+
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white">
+                      <div>
+                        <span className="font-bold block text-sm sm:text-base">
+                          Why You Cannot Close Clients ?
+                        </span>
+                        <span className="text-slate-300 text-xs">
+                          Radian Media / OVYRO · 43:51 Masterclass
+                        </span>
+                      </div>
+                      <span className="px-2.5 py-1 rounded bg-black/80 font-mono text-xs font-semibold">
+                        Click to Play
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Content Myth Buster Banner */}
         <div className="p-7 sm:p-8 rounded-xl bg-surface border border-hairline">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -90,27 +197,20 @@ export function YoutubeMoat() {
               </div>
             </div>
 
-            {/* Simulated YouTube Video Card */}
-            <div className="bg-brand-navy p-4 rounded-xl border border-slate-700 text-white shadow-lg">
-              <div className="relative aspect-video rounded-lg bg-slate-800 overflow-hidden flex items-center justify-center group border border-slate-700/80">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                <div className="w-14 h-14 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-lg transform group-hover:scale-105 transition">
-                  <Play className="w-6 h-6 fill-white ml-0.5" />
-                </div>
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs">
-                  <span className="font-semibold text-slate-200">The OVYRO Method™ Breakdown</span>
-                  <span className="px-2 py-0.5 rounded bg-black/60 font-mono text-[10px]">32:14</span>
-                </div>
+            <div className="p-5 rounded-xl bg-white border border-hairline shadow-subtle space-y-3">
+              <div className="text-xs font-bold uppercase tracking-wider text-steel">
+                The Compounding Math of YouTube
               </div>
-              <div className="mt-3.5 flex items-start justify-between gap-3 text-xs">
-                <div>
-                  <div className="font-bold text-white text-sm">
-                    How We Engineer Pre-Sold $10K+ B2B Client Acquisitions
-                  </div>
-                  <div className="text-slate-400 text-[11px] mt-0.5">
-                    OVYRO Method · 142K views · 98.4% Average Watch Duration
-                  </div>
-                </div>
+              <div className="space-y-2 text-xs text-charcoal leading-relaxed">
+                <p>
+                  • <strong>Instagram/TikTok:</strong> 50,000 views $\rightarrow$ 48-hour shelf life $\rightarrow$ 0 long-term compounding.
+                </p>
+                <p>
+                  • <strong>The OVYRO YouTube Engine:</strong> 1,500 targeted views $\rightarrow$ Evergreen search ranking $\rightarrow$ 7 hours consumed per buyer $\rightarrow$ Pre-sold $10,000+ retainers closed for years.
+                </p>
+              </div>
+              <div className="pt-2 border-t border-hairline text-[11px] font-bold text-primary">
+                Focus on depth of trust, not vanity views.
               </div>
             </div>
           </div>
