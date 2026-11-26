@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { CheckCircle2, ArrowRight, ShieldCheck } from "lucide-react";
+import { CheckCircle2, ArrowRight, ShieldCheck, MessageCircle, ExternalLink, Sparkles } from "lucide-react";
 
 export function ProposalCalculator() {
   const [selectedModules, setSelectedModules] = useState<string[]>([
@@ -11,14 +11,8 @@ export function ProposalCalculator() {
     "client_conveyor",
   ]);
 
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    business: "",
-    revenue: "₹3,00,000 – ₹10,00,000/mo ($4K – $15K)",
-  });
+  const [companyName, setCompanyName] = useState("");
+  const [revenueRange, setRevenueRange] = useState("₹3,00,000 – ₹10,00,000/mo ($4K – $15K)");
 
   const modules = [
     {
@@ -60,10 +54,20 @@ export function ProposalCalculator() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormSubmitted(true);
-  };
+  // Build dynamic prefilled WhatsApp message for 7875920111
+  const selectedModuleTitles = modules
+    .filter((m) => selectedModules.includes(m.id))
+    .map((m) => m.name);
+
+  const rawMessage = `Hi Hrushi, I reviewed the OVYRO Method proposal and funnel architecture. I want to schedule an Architecture Kickoff session for my business.
+
+${companyName.trim() ? `Business: ${companyName.trim()}\n` : ""}${revenueRange ? `Current Cash Flow: ${revenueRange}\n` : ""}
+Selected Modules:
+${selectedModuleTitles.map((t) => `• ${t}`).join("\n")}
+
+Looking forward to connecting!`;
+
+  const whatsappUrl = `https://wa.me/917875920111?text=${encodeURIComponent(rawMessage)}`;
 
   return (
     <section id="proposal-scope" className="py-24 sm:py-32 bg-white border-b border-hairline">
@@ -74,10 +78,10 @@ export function ProposalCalculator() {
             <span>Proposal Engagement Scope</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-ink tracking-tight">
-            Deployment Scope &amp; Application
+            Deployment Scope &amp; Architecture Kickoff
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate leading-relaxed">
-            We onboard a limited cohort of clients each month for direct execution. Select your required deployment modules and submit your business details to initiate kickoff.
+            We onboard a limited cohort of clients each month for direct execution. Select your required deployment modules below and message founder Hrushi directly on WhatsApp to coordinate kickoff.
           </p>
         </div>
 
@@ -90,7 +94,7 @@ export function ProposalCalculator() {
           <span className="text-steel font-medium shrink-0">Bespoke SLA Guaranteed</span>
         </div>
 
-        {/* 2-Column: Module Selector + Application Form */}
+        {/* 2-Column: Module Selector + Direct WhatsApp Kickoff Card */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Module Selector (7 cols) */}
           <div className="lg:col-span-7 space-y-4">
@@ -153,109 +157,81 @@ export function ProposalCalculator() {
             </div>
           </div>
 
-          {/* Application Form (5 cols) */}
+          {/* Direct WhatsApp Action Card (5 cols) */}
           <div className="lg:col-span-5">
-            <div className="p-6 sm:p-8 rounded-2xl bg-surface border border-hairline shadow-subtle">
-              <h3 className="text-lg sm:text-xl font-bold text-ink mb-1">
-                Schedule Architecture Kickoff
-              </h3>
-              <p className="text-xs sm:text-sm text-slate mb-6">
-                Tell us about your offer and current pipeline. We’ll review your assets and prepare custom funnel pathways for our call.
-              </p>
-
-              {formSubmitted ? (
-                <div className="p-6 sm:p-8 rounded-xl bg-white border border-hairline text-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-tint-mint text-brand-green flex items-center justify-center mx-auto">
-                    <CheckCircle2 className="w-6 h-6" />
-                  </div>
-                  <h4 className="text-base sm:text-lg font-bold text-ink">Application Received</h4>
-                  <p className="text-xs sm:text-sm text-slate leading-relaxed">
-                    Thank you, <strong>{formData.name}</strong>. Our senior team will review your business and reach out via WhatsApp at <strong>{formData.phone}</strong> within 4 business hours.
-                  </p>
-                  <button
-                    onClick={() => setFormSubmitted(false)}
-                    className="text-xs text-primary font-bold hover:underline pt-2 block mx-auto"
-                  >
-                    Submit another response
-                  </button>
+            <div className="p-6 sm:p-8 rounded-2xl bg-surface border border-hairline shadow-subtle space-y-5">
+              <div>
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#25D366]/15 text-[#128C7E] text-xs font-bold uppercase tracking-wider mb-2">
+                  <MessageCircle className="w-3.5 h-3.5 fill-[#25D366]" />
+                  <span>Direct Founder Access</span>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4 text-xs sm:text-sm">
-                  <div>
-                    <label className="block font-bold text-charcoal mb-1.5">Full Name</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="e.g. Hrushi Sharma"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full h-11 px-3.5 rounded-lg bg-white border border-hairline-strong text-ink text-sm sm:text-base focus:border-primary focus:outline-none transition"
-                    />
-                  </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-ink">
+                  Schedule Architecture Kickoff
+                </h3>
+                <p className="text-xs sm:text-sm text-slate mt-1 leading-relaxed">
+                  Connect with founder Hrushi Sharma on WhatsApp at <strong className="text-ink font-semibold">+91 78759 20111</strong> to coordinate your session.
+                </p>
+              </div>
 
-                  <div>
-                    <label className="block font-bold text-charcoal mb-1.5">Business Email</label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="e.g. founder@company.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full h-11 px-3.5 rounded-lg bg-white border border-hairline-strong text-ink text-sm sm:text-base focus:border-primary focus:outline-none transition"
-                    />
-                  </div>
+              {/* Optional Quick Context Inputs */}
+              <div className="space-y-3 pt-2 border-t border-hairline text-xs sm:text-sm">
+                <div>
+                  <label className="block font-bold text-charcoal mb-1">
+                    Company Website / Name (Optional)
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. yourcompany.com"
+                    value={companyName}
+                    onChange={(e) => setCompanyName(e.target.value)}
+                    className="w-full h-11 px-3.5 rounded-lg bg-white border border-hairline-strong text-ink text-sm focus:border-[#25D366] focus:outline-none transition"
+                  />
+                </div>
 
-                  <div>
-                    <label className="block font-bold text-charcoal mb-1.5">WhatsApp / Phone Number</label>
-                    <input
-                      type="tel"
-                      required
-                      placeholder="+91 98765 43210"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full h-11 px-3.5 rounded-lg bg-white border border-hairline-strong text-ink text-sm sm:text-base focus:border-primary focus:outline-none transition"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block font-bold text-charcoal mb-1.5">Company Website / Handle</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="https://yourcompany.com"
-                      value={formData.business}
-                      onChange={(e) => setFormData({ ...formData, business: e.target.value })}
-                      className="w-full h-11 px-3.5 rounded-lg bg-white border border-hairline-strong text-ink text-sm sm:text-base focus:border-primary focus:outline-none transition"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block font-bold text-charcoal mb-1.5">Current Monthly Cash Collected</label>
-                    <select
-                      value={formData.revenue}
-                      onChange={(e) => setFormData({ ...formData, revenue: e.target.value })}
-                      className="w-full h-11 px-3.5 rounded-lg bg-white border border-hairline-strong text-ink text-sm sm:text-base focus:border-primary focus:outline-none transition"
-                    >
-                      <option>Under ₹3,00,000/mo (&lt; $4K)</option>
-                      <option>₹3,00,000 – ₹10,00,000/mo ($4K – $15K)</option>
-                      <option>₹10,00,000 – ₹25,00,000/mo ($15K – $30K)</option>
-                      <option>₹25,00,000+/mo ($30K+)</option>
-                    </select>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-primary hover:bg-primary-pressed text-white font-bold py-3.5 px-4 rounded-lg shadow-sm transition flex items-center justify-center gap-2 mt-3 text-sm sm:text-base"
+                <div>
+                  <label className="block font-bold text-charcoal mb-1">
+                    Current Monthly Cash Collected
+                  </label>
+                  <select
+                    value={revenueRange}
+                    onChange={(e) => setRevenueRange(e.target.value)}
+                    className="w-full h-11 px-3.5 rounded-lg bg-white border border-hairline-strong text-ink text-sm focus:border-[#25D366] focus:outline-none transition"
                   >
-                    <span>Submit Application &amp; Schedule Kickoff</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+                    <option>Under ₹3,00,000/mo (&lt; $4K)</option>
+                    <option>₹3,00,000 – ₹10,00,000/mo ($4K – $15K)</option>
+                    <option>₹10,00,000 – ₹25,00,000/mo ($15K – $30K)</option>
+                    <option>₹25,00,000+/mo ($30K+)</option>
+                  </select>
+                </div>
+              </div>
 
-                  <p className="text-[11px] text-steel text-center leading-normal mt-2">
-                    Zero obligation. We will review your footprint and present your customized 7-11-4 roadmap.
-                  </p>
-                </form>
-              )}
+              {/* Prefilled Message Bubble */}
+              <div className="p-4 rounded-xl bg-white border border-hairline shadow-subtle text-xs space-y-1.5">
+                <div className="text-[10px] font-bold uppercase tracking-wider text-steel flex items-center justify-between">
+                  <span>Prefilled WhatsApp Message</span>
+                  <span className="text-[#128C7E] font-semibold">Ready to Send</span>
+                </div>
+                <div className="p-2.5 rounded-lg bg-[#f0fdf4] border border-[#bbf7d0] text-slate font-mono text-[11px] whitespace-pre-wrap leading-relaxed max-h-36 overflow-y-auto">
+                  {rawMessage}
+                </div>
+              </div>
+
+              {/* Direct WhatsApp CTA Button */}
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-[#25D366] hover:bg-[#20ba59] active:scale-95 text-white font-bold py-4 px-6 rounded-xl shadow-md transition flex items-center justify-center gap-2.5 text-sm sm:text-base"
+              >
+                <MessageCircle className="w-5 h-5 fill-white" />
+                <span>Message on WhatsApp (7875920111)</span>
+                <ExternalLink className="w-4 h-4 ml-1" />
+              </a>
+
+              <div className="text-[11px] text-steel text-center space-y-0.5">
+                <div>Direct line: <strong>+91 78759 20111</strong> · Hrushi Sharma</div>
+                <div>Typical response time: under 15 minutes during business hours.</div>
+              </div>
             </div>
           </div>
         </div>

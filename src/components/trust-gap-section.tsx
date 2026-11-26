@@ -61,7 +61,7 @@ export function TrustGapSection() {
                 Closer Burnout &amp; Ghosting
               </h3>
               <p className="text-xs sm:text-sm text-slate leading-relaxed mb-6">
-                Zero pre-established trust forces closers into defensive objection handling—leading to 50%+ no-shows and low 15% close rates.
+                Zero pre-established trust forces closers into defensive objection handling, leading to 50%+ no-shows and low 15% close rates.
               </p>
             </div>
             {/* Authentic Calendly Metric Proof from Google Doc */}

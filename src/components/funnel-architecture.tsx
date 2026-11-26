@@ -171,7 +171,7 @@ export function FunnelArchitecture() {
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
               <span className="font-mono text-slate-200 font-semibold">
                 {activeNode
-                  ? `${activeNode.title} — ${inCount} Inbound · ${outCount} Outbound Pathways`
+                  ? `${activeNode.title} | ${inCount} Inbound · ${outCount} Outbound Pathways`
                   : `Showing all ${current.nodes.length} nodes · ${current.edges.length} active pathways`}
               </span>
             </div>

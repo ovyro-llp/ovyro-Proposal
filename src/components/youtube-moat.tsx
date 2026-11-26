@@ -28,7 +28,7 @@ export function YoutubeMoat() {
             </span>
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate leading-relaxed">
-            Short-form social content creates fleeting curiosity. YouTube is the only media engine built for intentional binge-watching—enabling prospects to consume 7+ hours of your frameworks before the sales call.
+            Short-form social content creates fleeting curiosity. YouTube is the only media engine built for intentional binge-watching, enabling prospects to consume 7+ hours of your frameworks before the sales call.
           </p>
         </div>
 
@@ -66,7 +66,7 @@ export function YoutubeMoat() {
               Transfer-of-Trust Videos
             </h3>
             <p className="text-xs sm:text-sm text-slate leading-relaxed">
-              Post-booking confirmation videos where the founder personally introduces the designated strategist—transferring founder authority directly to the closer.
+              Post-booking confirmation videos where the founder personally introduces the designated strategist, transferring founder authority directly to the closer.
             </p>
           </div>
         </div>

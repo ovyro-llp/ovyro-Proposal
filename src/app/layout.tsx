@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "The OVYRO Method™ — Comprehensive Client Acquisition Funnel Architecture & Proposal",
+  title: "The OVYRO Method™ : Client Acquisition Funnel Architecture & Proposal",
   description:
     "We audit, build, and deploy high-converting client acquisition marketing funnels powered by YouTube and the Google 7-11-4 Rule for B2B founders, agencies, and high-ticket service businesses.",
   keywords: [
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "OVYRO LLP" }],
   openGraph: {
-    title: "The OVYRO Method™ — High-Converting Client Acquisition Architecture",
+    title: "The OVYRO Method™ : High-Converting Client Acquisition Architecture",
     description:
       "Audit, design, and deploy predictable client acquisition systems powered by YouTube and the Google 7-11-4 Rule.",
     type: "website",
