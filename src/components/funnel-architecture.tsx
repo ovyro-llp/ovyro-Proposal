@@ -122,28 +122,28 @@ export function FunnelArchitecture() {
   };
 
   return (
-    <section id="interactive-funnel" className="py-20 bg-white border-b border-hairline">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="interactive-funnel" className="py-24 sm:py-32 bg-white border-b border-hairline">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-tint-mint text-brand-green text-xs font-bold uppercase tracking-wider mb-2">
               <Zap className="w-3.5 h-3.5" />
               <span>Interactive Architecture · Master OVYRO System Blueprint</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-ink tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-ink tracking-tight">
               Interactive Funnel Architecture
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-slate max-w-2xl">
+            <p className="mt-3 text-sm sm:text-base text-slate max-w-3xl leading-relaxed">
               The exact system architecture engineered by OVYRO. Click or hover any node to trace upstream traffic sources and downstream conversion pathways across all 5 operational layers.
             </p>
           </div>
 
           {/* Action buttons */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2.5 shrink-0">
             <button
               onClick={exportPNG}
-              className="inline-flex items-center gap-1.5 bg-brand-navy hover:bg-brand-navy-mid text-white text-xs font-semibold px-4 py-2.5 rounded-md shadow-sm transition"
+              className="inline-flex items-center gap-1.5 bg-brand-navy hover:bg-brand-navy-mid text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-md shadow-sm transition"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Download High-Res 2x PNG</span>
@@ -157,6 +157,11 @@ export function FunnelArchitecture() {
           setSelectedNodeId(null);
           setHoveredNodeId(null);
         }} />
+
+        {/* Mobile Horizontal Pan Hint */}
+        <div className="lg:hidden text-center text-xs text-slate-500 py-2.5 px-3 rounded-lg bg-surface border border-hairline mb-3 flex items-center justify-center gap-1.5 font-medium">
+          <span>← Swipe horizontally to pan across full 1,520px architecture →</span>
+        </div>
 
         {/* Master Interactive SVG Graph Container */}
         <div className="bg-brand-navy rounded-2xl border border-border shadow-xl p-4 sm:p-6 overflow-hidden">
