@@ -36,14 +36,12 @@ RUN adduser --system --uid 1001 nextjs
 # Copy static assets with non-root ownership
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
-# Set the correct permission for prerender cache
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
-
-# Automatically leverage output traces to reduce image size
-# https://nextjs.org/docs/advanced-features/output-file-tracing
+# Copy standalone output and static assets
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+# Set permissions for prerender cache and runtime files
+RUN mkdir -p .next/cache && chown -R nextjs:nodejs /app
 
 USER nextjs
 
