@@ -15,6 +15,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Ensure public directory always exists in builder stage even if empty or not committed
+RUN mkdir -p /app/public
+
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
@@ -30,7 +33,8 @@ ENV HOSTNAME="0.0.0.0"
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-COPY --from=builder /app/public ./public
+# Copy static assets with non-root ownership
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
 # Set the correct permission for prerender cache
 RUN mkdir .next
